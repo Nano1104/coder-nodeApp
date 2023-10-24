@@ -233,7 +233,4 @@ if(NODE_ENV == "development") {                      //Si el entorno no es de de
     console.log(`================================================================`)
 }
 
-/* Nano1104 */
-/* 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 Amigachos04 */
-
 
