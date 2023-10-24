@@ -34,7 +34,11 @@ class SessionController {
             req.user = findUser                                 //pase el user logueado por el objeto req
 
             if(NODE_ENV == "production") {
-                res.redirect("/api/views/products")
+                if(findUser.role == "admin") {
+                    res.redirect("/api/users/current")
+                } else {
+                    res.redirect("/api/views/products")
+                }
             } else {
                 res.status(200).json({message: "User login successfully with Token", token: token})
             }

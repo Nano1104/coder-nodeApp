@@ -16,14 +16,14 @@ class ViewsRouter {
     }
 
     initRoutes() {
-        this.router.get(`${this.path}/products`, passportCall('jwt'), this.viewsController.renderProducts);
+        this.router.get(`${this.path}/products`, [passportCall('jwt'), authRole('user', 'premium')], this.viewsController.renderProducts);
 
         this.router.get(`${this.path}/carts/:cid`, this.viewsController.renderCart);
 
         this.router.get(`${this.path}/deleteProducts`, [passportCall('jwt'), authRole('admin')], this.viewsController.renderDeleteProducts);
 
         //////////////////////////////// WEBSOCKETS VIEWS
-        this.router.get(`${this.path}/chat`, [passportCall('jwt'), authRole('user, premium')], this.viewsController.renderChat)
+        this.router.get(`${this.path}/chat`, [passportCall('jwt'), authRole('user', 'premium')], this.viewsController.renderChat)
 
         //////////////////////////////// SESSION VIEWS 
         this.router.get(`${this.path}/login`, this.viewsController.renderLogin)
