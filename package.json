@@ -6,6 +6,8 @@
   "scripts": {
     "start": "cross-env NODE_ENV=production node ./src/app.js",
     "start:dev": "cross-env NODE_ENV=development nodemon ./src/app.js",
+    "watch:css": "npx tailwindcss -i ./public/css/index.css -o ./src/output.css --watch",
+    "dev": "concurrently \"npm run watch:css\" \"npm run start:dev\"",
     "start:test": "mocha test/supertest.test.js"
   },
   "keywords": [],
@@ -14,6 +16,7 @@
   "dependencies": {
     "bcrypt": "^5.1.0",
     "bootstrap": "^5.3.0",
+    "concurrently": "^8.2.2",
     "connect-mongo": "^5.0.0",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
@@ -41,6 +44,7 @@
     "chai": "^4.3.8",
     "mocha": "^10.2.0",
     "nodemon": "^2.0.22",
-    "supertest": "^6.3.3"
+    "supertest": "^6.3.3",
+    "tailwindcss": "^3.4.3"
   }
 }
